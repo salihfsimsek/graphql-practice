@@ -1,11 +1,13 @@
-const { ApolloServer, gql } = require('apollo-server');
-const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
+const { GraphQLServer } = require('graphql-yoga')
 
 const { v4: uuidv4 } = require('uuid');
 
-let { events, users, locations, participants } = require('./datas');
+const pubSub = require('./pubsub')
 
-const typeDefs = gql`
+let { events, users, locations, participants } = require('./datas');
+const pubsub = require('./pubsub');
+
+const typeDefs = `
     type Event{
         id: ID!
         title: String!
@@ -140,9 +142,26 @@ const typeDefs = gql`
         deleteParticipant(id: ID!): Participant!
         deleteAllParticipants: DeleteAllOutput!
     }
+
+    type Subscription{
+        userCreated: User!
+        eventCreated: Event!
+        participantCreated: Participant!
+    }
 `
 
 const resolvers = {
+    Subscription: {
+        userCreated: {
+            subscribe: (_, __, { pubSub }) => pubSub.asyncIterator('userCreated'),
+        },
+        eventCreated: {
+            subscribe: (_, __, { pubSub }) => pubSub.asyncIterator('eventCreated')
+        },
+        participantCreated: {
+            subscribe: (_, __, { pubSub }) => pubSub.asyncIterator('participantCreated')
+        }
+    },
     Query: {
         events: () => events,
         event: (parent, args) => events.find(event => event.id === parseInt(args.id)),
@@ -159,10 +178,12 @@ const resolvers = {
 
     Mutation: {
         // User
-        createUser: (parent, { data: { username, email } }) => {
+        createUser: (parent, { data: { username, email } }, { pubSub }) => {
             const user = { id: uuidv4(), username, email }
 
             users.push(user)
+
+            pubSub.publish('userCreated', { userCreated: user })
 
             return user
         },
@@ -323,14 +344,6 @@ const resolvers = {
     }
 }
 
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    plugins: [
-        ApolloServerPluginLandingPageGraphQLPlayground()
-    ]
-});
+const server = new GraphQLServer({ typeDefs, resolvers, context: { pubSub } })
 
-server.listen().then(({ url }) => {
-    console.log(`Server ready at ${url}`);
-})
+server.start(() => console.log('Server is running on localhost:4000'))
