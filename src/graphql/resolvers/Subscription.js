@@ -1,4 +1,4 @@
-Subscription = {
+export const Subscription = {
     userCreated: {
         subscribe: (_, __, { pubSub }) => pubSub.asyncIterator('userCreated'),
     },
@@ -9,5 +9,3 @@ Subscription = {
         subscribe: (_, __, { pubSub }) => pubSub.asyncIterator('participantCreated')
     }
 }
-
-module.exports.Subscription = Subscription

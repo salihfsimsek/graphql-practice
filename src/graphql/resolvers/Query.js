@@ -1,4 +1,4 @@
-Query = {
+export const Query = {
     events: (_, __, { db }) => db.events,
     event: (_, args, { db }) => db.events.find(event => event.id === parseInt(args.id)),
 
@@ -11,5 +11,3 @@ Query = {
     participants: (_, __, { db }) => db.participants,
     participant: (_, args, { db }) => db.participants.find(participant => participant.id === parseInt(args.id))
 }
-
-module.exports.Query = Query

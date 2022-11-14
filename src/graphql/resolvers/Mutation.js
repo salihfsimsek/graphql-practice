@@ -1,6 +1,6 @@
-const { v4: uuidv4 } = require('uuid');
+import { v4 as uuidv4 } from 'uuid';
 
-Mutation = {
+export const Mutation = {
     // User
     createUser: (_, { data: { username, email } }, { pubSub, db }) => {
         const user = { id: uuidv4(), username, email }
@@ -151,5 +151,3 @@ Mutation = {
         return { count }
     }
 }
-
-module.exports.Mutation = Mutation
