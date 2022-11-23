@@ -3,7 +3,7 @@ import Header from './Components/Header';
 
 import { Routes, Route } from 'react-router-dom';
 
-import { Home, Events, CreateEvent } from './Pages';
+import { Home, Events, CreateEvent, EventDetail } from './Pages';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
           <Route path='/' element={<Home />} exact />
           <Route path='/events' element={<Events />} />
           <Route path='/create-event' element={<CreateEvent />} />
+          <Route path='/events/:id' element={<EventDetail />} />
         </Routes>
       </div>
     </div>

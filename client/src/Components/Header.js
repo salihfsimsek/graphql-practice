@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 const Header = () => {
     const menuItems = [
         { path: '/', name: 'Home' },
+        { path: '/events', name: 'Events' },
         { path: '/create-event', name: 'Create Event' }
     ]
 
