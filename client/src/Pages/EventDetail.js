@@ -6,8 +6,6 @@ import { useQuery } from '@apollo/client'
 import { GET_EVENT } from '../queries/Event'
 import Loading from '../Components/Loading'
 
-import image from '../assets/event.jpg'
-
 const EventDetail = () => {
     const { id } = useParams()
 
@@ -22,7 +20,7 @@ const EventDetail = () => {
     return (
         <div className='container mx-auto flex justify-center items-center h-[calc(100vh-3.8rem)] pt-3'>
             <div className='p-5 h-full border-2 flex justify-start'>
-                <img src={image} alt='event' className='w-1/2 h-full' />
+                <img src={data.event.poster} alt='event' className='w-1/2 h-full' />
                 <div id='event_detail' className='ml-3 w-1/2'>
                     <div className='flex justify-between items-center'>
                         <span className='font-normal text-2xl'>

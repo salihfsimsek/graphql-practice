@@ -5,10 +5,6 @@ import { NavLink } from 'react-router-dom'
 import bgImage from '../assets/event.jpg'
 
 const Header = () => {
-    const path = window.location.pathname
-
-    console.log(path)
-
     const menuItems = [
         { path: '/', name: 'Home' },
         { path: '/events', name: 'Events' },
