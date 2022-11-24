@@ -8,9 +8,7 @@ import Loading from '../Components/Loading'
 import EventItem from '../Components/EventItem'
 
 const Events = () => {
-    const { loading, error, data } = useQuery(GET_EVENTS)
-
-    console.log(data)
+    const { loading, data } = useQuery(GET_EVENTS)
 
     if (loading) {
         return <Loading />

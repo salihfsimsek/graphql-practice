@@ -2,7 +2,13 @@ import React from 'react'
 
 import { NavLink } from 'react-router-dom'
 
+import bgImage from '../assets/event.jpg'
+
 const Header = () => {
+    const path = window.location.pathname
+
+    console.log(path)
+
     const menuItems = [
         { path: '/', name: 'Home' },
         { path: '/events', name: 'Events' },
@@ -11,8 +17,8 @@ const Header = () => {
 
     const menuItem = (menuName, path) => {
         return (
-            <li key={menuName} className={`menu_item mx-4 text-gray-600 hover:text-black`}>
-                <NavLink to={path} className={({ isActive }) => isActive ? 'text-black' : ''}>
+            <li key={menuName} className={`menu_item mx-4 text-gray-300 hover:text-white`}>
+                <NavLink to={path} className={({ isActive }) => isActive ? 'text-white' : ''}>
                     {menuName}
                 </NavLink>
             </li>
@@ -21,9 +27,11 @@ const Header = () => {
     }
 
     return (
-        <header className='border-b-slate-400 border-2 sticky top-0 bg-white'>
+        <header className={`sticky top-0 border-b-slate-400`}
+            style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'top' }}
+        >
             <div className='container h-14 flex justify-between items-center mx-auto my-auto'>
-                <span className='logo text-3xl flex-1'>
+                <span className='logo text-3xl text-white'>
                     Eventify
                 </span>
                 <ul className='menu_items flex justify-end items-center'>
