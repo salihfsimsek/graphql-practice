@@ -17,6 +17,7 @@ query getEvent($id: ID!){
       title
       desc
       date
+      poster
       location{
         name
       }

@@ -7,6 +7,7 @@ export default {
             "date": "2019-09-12",
             "from": "11:00",
             "to": "12:00",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 1,
             "user_id": 1
         },
@@ -17,6 +18,7 @@ export default {
             "date": "2019-08-01",
             "from": "03:36",
             "to": "12:17",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 11,
             "user_id": 6
         },
@@ -27,6 +29,7 @@ export default {
             "date": "2019-11-05",
             "from": "20:23",
             "to": "07:17",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 16,
             "user_id": 13
         },
@@ -37,6 +40,7 @@ export default {
             "date": "2019-08-10",
             "from": "15:40",
             "to": "03:53:40",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 12,
             "user_id": 9
         },
@@ -47,6 +51,7 @@ export default {
             "date": "2019-10-25",
             "from": "09:54",
             "to": "03:53",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 7,
             "user_id": 12
         },
@@ -57,6 +62,7 @@ export default {
             "date": "2019-05-03",
             "from": "02:52:23",
             "to": "16:25",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 8,
             "user_id": 15
         },
@@ -67,6 +73,7 @@ export default {
             "date": "2019-10-27",
             "from": "02:18",
             "to": "17:17",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 10,
             "user_id": 10
         },
@@ -77,6 +84,7 @@ export default {
             "date": "2019-05-28",
             "from": "05:09",
             "to": "11:12:08",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 15,
             "user_id": 9
         },
@@ -87,6 +95,7 @@ export default {
             "date": "2019-11-25",
             "from": "00:02:18",
             "to": "19:05",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 10,
             "user_id": 15
         },
@@ -97,6 +106,7 @@ export default {
             "date": "2019-03-16",
             "from": "12:28",
             "to": "18:39:59",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 25,
             "user_id": 6
         },
@@ -107,6 +117,7 @@ export default {
             "date": "2019-09-12",
             "from": "06:28",
             "to": "20:27:09",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 16,
             "user_id": 17
         },
@@ -117,6 +128,7 @@ export default {
             "date": "2019-03-23",
             "from": "08:19",
             "to": "15:18",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 16,
             "user_id": 12
         },
@@ -127,6 +139,7 @@ export default {
             "date": "2019-11-02",
             "from": "22:34",
             "to": "16:47:34",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 18,
             "user_id": 9
         },
@@ -137,6 +150,7 @@ export default {
             "date": "2019-12-27",
             "from": "16:16:19",
             "to": "20:11",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 11,
             "user_id": 13
         },
@@ -147,6 +161,7 @@ export default {
             "date": "2019-08-28",
             "from": "17:47:52",
             "to": "20:09:33",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 14,
             "user_id": 12
         },
@@ -157,6 +172,7 @@ export default {
             "date": "2019-08-01",
             "from": "17:01:23",
             "to": "17:43:27",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 9,
             "user_id": 14
         },
@@ -167,6 +183,7 @@ export default {
             "date": "2019-12-26",
             "from": "13:34",
             "to": "10:58:26",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 12,
             "user_id": 13
         },
@@ -177,6 +194,7 @@ export default {
             "date": "2019-09-08",
             "from": "20:01",
             "to": "03:28:18",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 7,
             "user_id": 15
         },
@@ -187,6 +205,7 @@ export default {
             "date": "2019-09-13",
             "from": "00:13",
             "to": "21:26:05",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 9,
             "user_id": 16
         },
@@ -197,6 +216,7 @@ export default {
             "date": "2019-07-30",
             "from": "09:15:12",
             "to": "11:57:37",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 9,
             "user_id": 19
         },
@@ -207,6 +227,7 @@ export default {
             "date": "2019-07-27",
             "from": "20:38",
             "to": "02:25:33",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 7,
             "user_id": 16
         },
@@ -217,6 +238,7 @@ export default {
             "date": "2019-04-26",
             "from": "12:14",
             "to": "16:10:03",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 14,
             "user_id": 15
         },
@@ -227,6 +249,7 @@ export default {
             "date": "2019-03-28",
             "from": "06:02",
             "to": "12:18",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 20,
             "user_id": 8
         },
@@ -237,6 +260,7 @@ export default {
             "date": "2019-12-29",
             "from": "08:00",
             "to": "10:00",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 25,
             "user_id": 25
         },
@@ -247,6 +271,7 @@ export default {
             "date": "2019-03-01",
             "from": "23:00",
             "to": "23:45",
+            "poster": "https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg",
             "location_id": 12,
             "user_id": 12
         }

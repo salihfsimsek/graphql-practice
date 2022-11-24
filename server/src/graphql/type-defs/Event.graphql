@@ -22,6 +22,7 @@ type Event {
   date: String!
   from: String!
   to: String!
+  poster: String!
   location_id: ID!
   user_id: ID!
   user: User!
@@ -35,6 +36,7 @@ input CreateEventInput {
   date: String!
   from: String!
   to: String!
+  poster: String!
   location_id: ID!
   user_id: ID!
 }
@@ -44,6 +46,7 @@ input UpdateEventInput {
   desc: String
   date: String
   from: String
+  poster: String
   to: String
   location_id: ID
   user_id: ID
