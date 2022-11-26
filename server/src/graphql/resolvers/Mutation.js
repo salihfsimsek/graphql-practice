@@ -41,10 +41,12 @@ export const Mutation = {
     },
 
     // Event
-    createEvent: (_, { data: { title, desc, date, from, to, location_id, user_id } }, { db }) => {
+    createEvent: (_, { data: { title, desc, date, from, to, location_id, user_id } }, { pubSub, db }) => {
         const event = { id: uuidv4(), title, desc, date, from, to, location_id, user_id }
 
         db.events.push(event)
+
+        pubSub.publish('eventCreated', { eventCreated: event })
 
         return event
     },
@@ -115,10 +117,12 @@ export const Mutation = {
     },
 
     // Participant
-    createParticipant: (_, { data: { event_id, user_id } }, { db }) => {
+    createParticipant: (_, { data: { event_id, user_id } }, { pubSub, db }) => {
         const participant = { id: uuidv4(), event_id, user_id }
 
         db.participants.push(participant)
+
+        pubSub.publish('participantCreated', { participantCreated: participant })
 
         return participant
     },
