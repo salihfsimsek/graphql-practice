@@ -5,7 +5,7 @@ export const Mutation = {
     createUser: (_, { data: { username, email } }, { pubSub, db }) => {
         const user = { id: uuidv4(), username, email }
 
-        db.users.push(user)
+        db.users.unshift(user)
 
         pubSub.publish('userCreated', { userCreated: user })
 
@@ -44,9 +44,10 @@ export const Mutation = {
     createEvent: (_, { data: { title, desc, date, from, to, location_id, user_id } }, { pubSub, db }) => {
         const event = { id: uuidv4(), title, desc, date, from, to, location_id, user_id }
 
-        db.events.push(event)
+        db.events.unshift(event)
 
         pubSub.publish('eventCreated', { eventCreated: event })
+        pubSub.publish('eventCount', { eventCount: db.events.length })
 
         return event
     },
@@ -62,19 +63,23 @@ export const Mutation = {
 
         return db.events[event]
     },
-    deleteEvent: (_, { id }, { db }) => {
+    deleteEvent: (_, { id }, { pubSub, db }) => {
         const event = db.events.find(event => event.id === parseInt(id))
 
         if (!event) throw new Error('Event not found')
 
         db.events.splice(db.events.indexOf(event), 1)
 
+        pubSub.publish('eventCount', { eventCount: db.events.length })
+
         return event
     },
-    deleteAllEvents: (_, __, { db }) => {
+    deleteAllEvents: (_, __, { pubSub, db }) => {
         const count = db.events.length
 
         db.events = []
+
+        pubSub.publish('eventCount', { eventCount: db.events.length })
 
         return { count }
     },
@@ -83,7 +88,7 @@ export const Mutation = {
     createLocation: (_, { data: { name, desc, lat, lng } }, { db }) => {
         const location = { id: uuidv4(), name, desc, lat, lng }
 
-        db.locations.push(location)
+        db.locations.unshift(location)
 
         return location
     },
@@ -120,7 +125,7 @@ export const Mutation = {
     createParticipant: (_, { data: { event_id, user_id } }, { pubSub, db }) => {
         const participant = { id: uuidv4(), event_id, user_id }
 
-        db.participants.push(participant)
+        db.participants.unshift(participant)
 
         pubSub.publish('participantCreated', { participantCreated: participant })
 

@@ -7,5 +7,13 @@ export const Subscription = {
     },
     participantCreated: {
         subscribe: (_, __, { pubSub }) => pubSub.asyncIterator('participantCreated')
+    },
+    eventCount: {
+        subscribe: (_, __, { pubSub, db }) => {
+            setTimeout(() => {
+                pubSub.publish('eventCount', { eventCount: db.events.length })
+            }, 0)
+            return pubSub.asyncIterator('eventCount')
+        }
     }
 }

@@ -4,7 +4,6 @@ type Query {
 }
 
 type Mutation {
-  #Event
   createEvent(data: CreateEventInput!): Event!
   updateEvent(id: ID!, data: UpdateEventInput!): Event!
   deleteEvent(id: ID!): Event!
@@ -13,6 +12,7 @@ type Mutation {
 
 type Subscription {
   eventCreated: Event!
+  eventCount: Int!
 }
 
 type Event {
