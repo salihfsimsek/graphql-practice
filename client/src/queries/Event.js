@@ -10,6 +10,18 @@ export const GET_EVENTS = gql`
         }
     }
 `
+
+export const EVENTS_SUBSCRIPTION = gql`
+  subscription{
+    eventCreated{
+      id
+      title
+      desc
+      date
+    }
+  }
+`
+
 export const GET_EVENT = gql`
 query getEvent($id: ID!){
     event(id:$id){
@@ -26,4 +38,10 @@ query getEvent($id: ID!){
       }
     }
   }
+`
+
+export const EVENT_COUNT_SUBSCRIPTION = gql`
+subscription{
+  eventCount
+}
 `
