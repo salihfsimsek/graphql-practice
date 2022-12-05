@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 
 import { GET_EVENT } from '../queries/Event'
+
+import EventParticipants from '../Components/EventParticipants'
 import Loading from '../Components/Loading'
 
 const EventDetail = () => {
@@ -42,6 +44,7 @@ const EventDetail = () => {
                         <span className='font-normal text-lg text-gray-700 mb-5'>Event Description</span>
                         <span>{data.event.desc}</span>
                     </div>
+                    <EventParticipants />
                 </div>
             </div>
         </div>
