@@ -9,5 +9,5 @@ export const Query = {
     location: (_, args, { db }) => db.locations.find(location => location.id === parseInt(args.id)),
 
     participants: (_, __, { db }) => db.participants,
-    participant: (_, args, { db }) => db.participants.find(participant => participant.id === parseInt(args.id))
+    participant: (_, args, { db }) => db.participants.find(participant => participant.event_id === parseInt(args.event_id))
 }

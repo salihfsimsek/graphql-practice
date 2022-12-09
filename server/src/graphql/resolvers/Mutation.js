@@ -124,7 +124,6 @@ export const Mutation = {
     // Participant
     createParticipant: (_, { data: { event_id, user_id } }, { pubSub, db }) => {
         const participant = { id: uuidv4(), event_id, user_id }
-
         db.participants.unshift(participant)
 
         pubSub.publish('participantCreated', { participantCreated: participant })
