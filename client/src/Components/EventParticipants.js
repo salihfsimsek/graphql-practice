@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useParams } from "react-router-dom";
 
 import { useLazyQuery } from "@apollo/client";
 
-import { GET_PARTICIPANTS } from "../queries/Participant";
+import { GET_PARTICIPANTS, PARTICIPANTS_SUBSCRIPTION } from "../queries/Participant";
 
 import Loading from "./Loading";
 
 const EventParticipants = () => {
     const { id } = useParams();
 
-    const [loadParticipants, { loading, data }] = useLazyQuery(
+    const [loadParticipants, { called, loading, data, subscribeToMore }] = useLazyQuery(
         GET_PARTICIPANTS,
         {
             variables: { id: id },
@@ -32,6 +32,25 @@ const EventParticipants = () => {
             </button>
         </div>
     }
+
+    useEffect(() => {
+        if (!loading && called) {
+            subscribeToMore({
+                document: PARTICIPANTS_SUBSCRIPTION,
+                updateQuery: (prev, { subscriptionData }) => {
+                    if (!subscriptionData.data) return prev
+                    const newParticipant = subscriptionData.data.participantCreated
+                    return {
+                        ...prev,
+                        event: {
+                            ...prev.event,
+                            participants: [newParticipant, ...prev.event.participants]
+                        }
+                    }
+                }
+            })
+        }
+    }, [loading, called, subscribeToMore])
 
     return (
         <div className="mt-5 text-center">
