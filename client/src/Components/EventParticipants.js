@@ -37,6 +37,7 @@ const EventParticipants = () => {
         if (!loading && called) {
             subscribeToMore({
                 document: PARTICIPANTS_SUBSCRIPTION,
+                variables: { event_id: id },
                 updateQuery: (prev, { subscriptionData }) => {
                     if (!subscriptionData.data) return prev
                     const newParticipant = subscriptionData.data.participantCreated
