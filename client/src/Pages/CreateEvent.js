@@ -11,6 +11,7 @@ import Button from '../Components/Button'
 import FileInput from '../Components/FileInput'
 import Input from '../Components/Input'
 import TextArea from '../Components/TextArea'
+import Loading from '../Components/Loading'
 
 const CreateEvent = () => {
     const navigate = useNavigate()
@@ -27,6 +28,7 @@ const CreateEvent = () => {
 
     const submitForm = e => {
         e.preventDefault()
+        if (loading) return
         saveEvent({
             variables: {
                 data: {
@@ -61,7 +63,9 @@ const CreateEvent = () => {
                     <TextArea value={description} changeValue={setDescription} placeholder='Event Description' />
                     <Input value={eventDate} changeValue={setEventDate} placeholder='Event Date' type='date' required />
                     <FileInput value={eventImage} changeValue={setEventImage} />
-                    <Button text={loading ? 'Loading' : 'Create'} type='submit' />
+                    <Button type='submit' >
+                        {loading ? <Loading /> : <span>Create</span>}
+                    </Button>
                 </form>
             </div>
         </section>
