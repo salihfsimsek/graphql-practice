@@ -45,6 +45,15 @@ query getEvent($id: ID!){
   }
 `
 
+export const NEW_EVENT_MUTATION = gql`
+  mutation createNewEvent($data: CreateEventInput!){
+    createEvent(data: $data){
+      id
+      title
+    }
+  }
+`
+
 export const EVENT_COUNT_SUBSCRIPTION = gql`
 subscription{
   eventCount
