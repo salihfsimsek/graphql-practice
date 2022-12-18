@@ -16,6 +16,7 @@
     "graphql-redis-subscriptions": "^2.5.0",
     "graphql-yoga": "1.18.3",
     "ioredis": "^5.2.4",
+    "mongoose": "^6.8.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
