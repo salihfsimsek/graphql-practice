@@ -28,7 +28,7 @@ const EventSchema = new mongoose.Schema({
     poster: {
         type: String
     },
-    createdBy: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     }

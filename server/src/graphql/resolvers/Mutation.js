@@ -28,47 +28,34 @@ export const Mutation = {
         return { message: 'User deleted' }
     },
     // Event
-    createEvent: (_, { data: { title, desc, date, from, to, location_id, user_id } }, { pubSub, db }) => {
-        const event = { id: uuidv4(), title, desc, date, from, to, location_id, user_id }
+    createEvent: async (_, { data: { title, description, date, from, to, location, user } }, { pubSub, db }) => {
+        let event = { title, description, date, from, to, location, user }
 
-        db.events.unshift(event)
+        event = await db.EventService.create(event)
 
         pubSub.publish('eventCreated', { eventCreated: event })
-        pubSub.publish('eventCount', { eventCount: db.events.length })
+
+        //Event count functinality add here
+        // pubSub.publish('eventCount', { eventCount: db.events.length })
 
         return event
     },
-    updateEvent: (_, { id, data }, { db }) => {
-        const event = db.events.findIndex(event => event.id === parseInt(id))
+    updateEvent: async (_, { id, data }, { db }) => {
+        const updatedEvent = await db.EventService.update({ _id: id }, data)
 
-        if (event === -1) throw new Error('Event not found')
+        if (!updatedEvent) throw new Error('Event not found')
 
-        db.events[event] = {
-            ...db.events[event],
-            ...data
-        }
-
-        return db.events[event]
+        return updatedEvent
     },
-    deleteEvent: (_, { id }, { pubSub, db }) => {
-        const event = db.events.find(event => event.id === parseInt(id))
+    deleteEvent: async (_, { id }, { pubSub, db }) => {
+        const event = await db.EventService.deleteOne({ _id: id })
 
-        if (!event) throw new Error('Event not found')
+        if (event.deletedCount === 0) throw new Error('Event not found')
 
-        db.events.splice(db.events.indexOf(event), 1)
+        //Event count functinality add here
+        // pubSub.publish('eventCount', { eventCount: db.events.length })
 
-        pubSub.publish('eventCount', { eventCount: db.events.length })
-
-        return event
-    },
-    deleteAllEvents: (_, __, { pubSub, db }) => {
-        const count = db.events.length
-
-        db.events = []
-
-        pubSub.publish('eventCount', { eventCount: db.events.length })
-
-        return { count }
+        return { message: 'Event deleted' }
     },
 
     // Location

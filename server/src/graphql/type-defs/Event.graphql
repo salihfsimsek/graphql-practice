@@ -6,7 +6,7 @@ type Query {
 type Mutation {
   createEvent(data: CreateEventInput!): Event!
   updateEvent(id: ID!, data: UpdateEventInput!): Event!
-  deleteEvent(id: ID!): Event!
+  deleteEvent(id: ID!): DeleteOutput!
   deleteAllEvents: DeleteAllOutput!
 }
 
@@ -18,12 +18,11 @@ type Subscription {
 type Event {
   id: ID!
   title: String!
-  desc: String!
+  description: String!
   date: String!
   from: String!
   to: String!
   poster: String!
-  location_id: ID!
   user: User!
   location: Location!
   participants: [Participant!]!
@@ -31,22 +30,22 @@ type Event {
 
 input CreateEventInput {
   title: String!
-  desc: String!
+  description: String!
   date: String!
   from: String!
   to: String!
   poster: String!
-  location_id: ID!
-  user_id: ID!
+  location: ID!
+  user: ID!
 }
 
 input UpdateEventInput {
   title: String
-  desc: String
+  description: String
   date: String
   from: String
   poster: String
   to: String
-  location_id: ID
-  user_id: ID
+  location: ID
+  user: ID
 }
