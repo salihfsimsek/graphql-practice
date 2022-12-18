@@ -7,8 +7,8 @@ class BaseService {
         return this.model.create(data)
     }
 
-    async findONe(where) {
-        return this.model.findONe(where)
+    async findOne(where) {
+        return this.model.findOne(where)
     }
 
     async update(item, data) {
