@@ -1,4 +1,4 @@
-class BaseService {
+export default class BaseService {
     async list(where) {
         return this.model.find(where || {})
     }
@@ -19,3 +19,4 @@ class BaseService {
         return this.model.deleteOne(where)
     }
 }
+
