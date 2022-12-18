@@ -6,7 +6,7 @@ type Query {
 type Mutation {
   createUser(data: CreateUserInput!): User!
   updateUser(id: ID!, data: UpdateUserInput!): User!
-  deleteUser(id: ID!): User!
+  deleteUser(id: ID!): DeleteOutput!
   deleteAllUsers: DeleteAllOutput!
 }
 
@@ -15,18 +15,24 @@ type Subscription {
 }
 
 type User {
-  id: ID!
+  id: ID
   username: String!
+  password: String!
+  profilePhoto: String
   email: String!
   events: [Event!]!
 }
 
 input CreateUserInput {
   username: String!
+  password: String!
   email: String!
+  profilePhoto: String
 }
 
 input UpdateUserInput {
   username: String
+  password: String
   email: String
+  profilePhoto: String
 }

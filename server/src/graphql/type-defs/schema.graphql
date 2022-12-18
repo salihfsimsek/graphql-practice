@@ -1,3 +1,7 @@
 type DeleteAllOutput {
   count: Int!
 }
+
+type DeleteOutput {
+  message: String!
+}

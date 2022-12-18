@@ -17,6 +17,6 @@ import typeDefs from '@typeDefs'
 
 loaders()
 
-const server = new GraphQLServer({ typeDefs, resolvers, context: { pubSub, _db: { UserService, EventService, LocationService, ParticipantService } } })
+const server = new GraphQLServer({ typeDefs, resolvers, context: { pubSub, db: { UserService, EventService, LocationService, ParticipantService } } })
 
 server.start(() => console.log('Server is running on localhost:4000'))

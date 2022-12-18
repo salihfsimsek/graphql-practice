@@ -16,18 +16,16 @@ type Subscription {
 
 type Participant {
   id: ID!
-  event_id: ID!
-  user_id: ID!
   user: User!
   event: Event!
 }
 
 input CreateParticipantInput {
-  event_id: ID!
-  user_id: ID!
+  event: ID!
+  user: ID!
 }
 
 input UpdateParticipantInput {
-  event_id: ID
-  user_id: ID
+  event: ID
+  user: ID
 }

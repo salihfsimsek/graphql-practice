@@ -2,44 +2,31 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const Mutation = {
     // User
-    createUser: (_, { data: { username, email } }, { pubSub, db }) => {
-        const user = { id: uuidv4(), username, email }
+    createUser: async (_, { data: { username, email, password, profilePhoto } }, { pubSub, db }) => {
+        let user = { username, password, profilePhoto, email, events: [] }
 
-        db.users.unshift(user)
+        // I am gonna add password crypting here
+
+        user = await db.UserService.create(user)
 
         pubSub.publish('userCreated', { userCreated: user })
 
         return user
     },
-    updateUser: (_, { id, data }, { db }) => {
-        const user = db.users.findIndex(user => user.id === parseInt(id))
+    updateUser: async (_, { id, data }, { db }) => {
+        const updatedUser = await db.UserService.update({ _id: id }, data)
 
-        if (user === -1) throw new Error('User not found')
+        if (!updatedUser) throw new Error('User not found')
 
-        db.users[user] = {
-            ...db.users[user],
-            ...data
-        }
-
-        return db.users[user]
+        return updatedUser
     },
-    deleteUser: (_, { id }, { db }) => {
-        const user = db.users.find(user => user.id === parseInt(id))
+    deleteUser: async (_, { id }, { db }) => {
+        const user = await db.UserService.deleteOne({ _id: id })
 
-        if (!user) throw new Error('User not found')
+        if (user.deletedCount === 0) throw new Error('User not found')
 
-        db.users.splice(db.users.indexOf(user), 1)
-
-        return user
+        return { message: 'User deleted' }
     },
-    deleteAllUsers: (_, __, { db }) => {
-        const count = db.users.length
-
-        db.users = []
-
-        return { count }
-    },
-
     // Event
     createEvent: (_, { data: { title, desc, date, from, to, location_id, user_id } }, { pubSub, db }) => {
         const event = { id: uuidv4(), title, desc, date, from, to, location_id, user_id }
