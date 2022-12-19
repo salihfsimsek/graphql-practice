@@ -82,40 +82,27 @@ export const Mutation = {
     },
 
     // Participant
-    createParticipant: (_, { data: { event_id, user_id } }, { pubSub, db }) => {
-        const participant = { id: uuidv4(), event_id, user_id }
-        db.participants.unshift(participant)
+    createParticipant: async (_, { data: { user, event } }, { pubSub, db }) => {
+        let participant = { user, event }
+
+        participant = await db.ParticipantService.create(participant)
 
         pubSub.publish('participantCreated', { participantCreated: participant })
 
         return participant
     },
-    updateParticipant: (_, { id, data }, { db }) => {
-        const participant = db.participants.findIndex(participant => participant.id === parseInt(id))
-
-        if (participant === -1) throw new Error('Participant not found')
-
-        db.participants[participant] = {
-            ...db.participants[participant],
-            ...data
-        }
-
-        return db.participants[participant]
-    },
-    deleteParticipant: (_, { id }, { db }) => {
-        const participant = db.participants.find(participant => participant.id === parseInt(id))
+    updateParticipant: async (_, { id, data }, { db }) => {
+        const participant = await db.ParticipantService.update({ _id: id }, data)
 
         if (!participant) throw new Error('Participant not found')
 
-        db.participants.splice(db.participants.indexOf(participant), 1)
-
         return participant
     },
-    deleteAllParticipants: (_, __, { db }) => {
-        const count = db.participants.length
+    deleteParticipant: async (_, { id }, { db }) => {
+        const participant = await db.ParticipantService.deleteOne({ _id: id })
 
-        db.participants = []
+        if (participant.deletedCount === 0) throw new Error('Participant not found')
 
-        return { count }
-    }
+        return { message: 'Participant deleted' }
+    },
 }

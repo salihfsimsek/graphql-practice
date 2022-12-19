@@ -6,7 +6,7 @@ type Query {
 type Mutation {
   createParticipant(data: CreateParticipantInput!): Participant!
   updateParticipant(id: ID!, data: UpdateParticipantInput!): Participant!
-  deleteParticipant(id: ID!): Participant!
+  deleteParticipant(id: ID!): DeleteOutput!
   deleteAllParticipants: DeleteAllOutput!
 }
 

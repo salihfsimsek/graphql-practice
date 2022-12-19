@@ -31,7 +31,7 @@ export const Query = {
         return participants
     },
     participant: async (_, args, { db }) => {
-        const participant = await db.ParticipantService.findOne({ event: args.event_id })
+        const participant = await db.ParticipantService.findOne(args)
         return participant
     }
 }
