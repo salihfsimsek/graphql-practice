@@ -17,6 +17,10 @@ const LocationSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    events: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event',
+    }]
 })
 
 const LocationModel = mongoose.model('Location', LocationSchema)

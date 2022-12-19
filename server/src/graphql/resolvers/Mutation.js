@@ -59,40 +59,26 @@ export const Mutation = {
     },
 
     // Location
-    createLocation: (_, { data: { name, desc, lat, lng } }, { db }) => {
-        const location = { id: uuidv4(), name, desc, lat, lng }
+    createLocation: async (_, { data: { name, description, lat, lng } }, { db }) => {
+        let location = { name, description, lat, lng, events: [] }
 
-        db.locations.unshift(location)
+        location = await db.LocationService.create(location)
 
         return location
     },
-    updateLocation: (_, { id, data }, { db }) => {
-        const location = db.locations.findIndex(location => location.id === parseInt(id))
-
-        if (location === -1) throw new Error('Location not found')
-
-        db.locations[location] = {
-            ...db.locations[location],
-            ...data
-        }
-
-        return db.locations[location]
-    },
-    deleteLocation: (_, { id }, { db }) => {
-        const location = db.locations.find(location => location.id === parseInt(id))
+    updateLocation: async (_, { id, data }, { db }) => {
+        const location = await db.LocationService.update({ _id: id }, data)
 
         if (!location) throw new Error('Location not found')
 
-        db.locations.splice(db.locations.indexOf(location), 1)
-
         return location
     },
-    deleteAllLocations: (_, __, { db }) => {
-        const count = db.locations.length
+    deleteLocation: async (_, { id }, { db }) => {
+        const location = await db.LocationService.deleteOne({ _id: id })
 
-        db.locations = []
+        if (location.deletedCount === 0) throw new Error('Location not found')
 
-        return { count }
+        return { message: 'Location deleted' }
     },
 
     // Participant
