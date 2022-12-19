@@ -18,5 +18,9 @@ export default class BaseService {
     async deleteOne(where) {
         return this.model.deleteOne(where)
     }
+
+    async itemCount() {
+        return this.model.count()
+    }
 }
 

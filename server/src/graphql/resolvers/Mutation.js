@@ -35,8 +35,9 @@ export const Mutation = {
 
         pubSub.publish('eventCreated', { eventCreated: event })
 
-        //Event count functinality add here
-        // pubSub.publish('eventCount', { eventCount: db.events.length })
+        // Get event count and publish it
+        const eventCount = await db.EventService.itemCount()
+        pubSub.publish('eventCount', { eventCount })
 
         return event
     },
@@ -52,8 +53,11 @@ export const Mutation = {
 
         if (event.deletedCount === 0) throw new Error('Event not found')
 
-        //Event count functinality add here
-        // pubSub.publish('eventCount', { eventCount: db.events.length })
+        // Get event count and publish it
+        const eventCount = await db.EventService.itemCount()
+        pubSub.publish('eventCount', { eventCount })
+
+        console.log(eventCount)
 
         return { message: 'Event deleted' }
     },
