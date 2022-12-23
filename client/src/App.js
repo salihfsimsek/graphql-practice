@@ -10,7 +10,7 @@ function App() {
     <div className="h-screen">
       <Header />
       {/* container  mx-auto */}
-      <div className='min-h-[calc(100vh-4rem)]'>
+      <div className='min-h-[calc(100vh-56px)]'>
         <Routes>
           <Route path='/' element={<Home />} exact />
           <Route path='/events' element={<Events />} />

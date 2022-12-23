@@ -38,7 +38,7 @@ const Events = () => {
             </div>
             <div id='event_container'>
                 <ul id='event_list'>
-                    {data.events.map((event, index) => (
+                    {data?.events.map((event, index) => (
                         <EventItem key={index} data={event} />
                     ))}
                 </ul>

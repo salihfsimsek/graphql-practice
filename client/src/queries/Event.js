@@ -4,7 +4,7 @@ const eventsFragment = gql`
   fragment EventsFragment on Event {
     id
     title
-    desc
+    description
     date
   }
 `
@@ -32,7 +32,7 @@ query getEvent($id: ID!){
     event(id:$id){
       id
       title
-      desc
+      description
       date
       poster
       location{

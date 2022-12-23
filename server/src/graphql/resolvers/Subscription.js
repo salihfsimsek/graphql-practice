@@ -20,8 +20,9 @@ export const Subscription = {
     },
     eventCount: {
         subscribe: (_, __, { pubSub, db }) => {
-            setTimeout(() => {
-                pubSub.publish('eventCount', { eventCount: db.events.length })
+            setTimeout(async () => {
+                const eventCount = await db.EventService.itemCount()
+                pubSub.publish('eventCount', { eventCount })
             }, 0)
             return pubSub.asyncIterator('eventCount')
         }

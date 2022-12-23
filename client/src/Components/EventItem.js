@@ -17,7 +17,7 @@ const EventItem = ({ data }) => {
                 </div>
             </div>
             <div className='event_item_desc truncate'>
-                {data.desc}
+                {data.description}
             </div>
         </li>
     )

@@ -22,7 +22,7 @@ const CreateEvent = () => {
     const [description, setDescription] = useState('')
     const [eventDate, setEventDate] = useState('')
     const [eventImage, setEventImage] = useState("https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg")
-    const [eventLocation, setEventLocation] = useState('1')
+    const [eventLocation, setEventLocation] = useState('63a0c99e12d2082f1cb35340')
     const [timeFrom, setTimeFrom] = useState('11:00')
     const [timeTo, setTimeTo] = useState('16:00')
 
@@ -33,13 +33,13 @@ const CreateEvent = () => {
             variables: {
                 data: {
                     title: eventTitle,
-                    desc: description,
+                    description: description,
                     date: eventDate,
                     poster: eventImage,
                     from: timeFrom,
                     to: timeTo,
-                    location_id: eventLocation,
-                    user_id: 1
+                    location: eventLocation,
+                    user: "639f686ebb5cb5c25f53eccc"
                 }
             }
         }).then(res => {
@@ -55,7 +55,7 @@ const CreateEvent = () => {
     }
 
     return (
-        <section className='h-[calc(100vh-3.8rem)]' style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <section className='h-[calc(100vh-56px)]' style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className='absolute top-1/2 left-1/2 w-[30%] min-w-[250px] translate-x-[-50%] translate-y-[-50%] h-fit py-10 px-5 bg-[rgba(255,255,255,0.5)] border-2 border-white rounded-lg'>
                 <h2 className='mb-10 text-center text-3xl font-medium'>Create Event</h2>
                 <form onSubmit={submitForm} className='flex flex-col justify-center items-center gap-y-4'>
