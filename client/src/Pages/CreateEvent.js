@@ -4,6 +4,7 @@ import { useMutation, useQuery } from '@apollo/client'
 
 import { NEW_EVENT_MUTATION } from '../queries/Event'
 import { GET_LOCATIONS } from '../queries/Location'
+import { GET_USERS } from '../queries/User'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -22,6 +23,8 @@ const CreateEvent = () => {
 
     const { loading: locationLoading, data: locations } = useQuery(GET_LOCATIONS)
 
+    const { loading: userLoading, data: users } = useQuery(GET_USERS)
+
     const [eventTitle, setEventTitle] = useState('')
     const [description, setDescription] = useState('')
     const [eventDate, setEventDate] = useState('')
@@ -29,6 +32,7 @@ const CreateEvent = () => {
     const [timeTo, setTimeTo] = useState('')
     const [eventLocation, setEventLocation] = useState('')
     const [eventImage, setEventImage] = useState("https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg")
+    const [owner, setOwner] = useState('')
 
     const submitForm = e => {
         e.preventDefault()
@@ -43,7 +47,7 @@ const CreateEvent = () => {
                     from: timeFrom,
                     to: timeTo,
                     location: eventLocation,
-                    user: "639f686ebb5cb5c25f53eccc"
+                    user: owner
                 }
             }
         }).then(res => {
@@ -51,10 +55,11 @@ const CreateEvent = () => {
             setDescription('')
             setEventDate('')
             navigate('/events')
-            setEventImage('')
             setEventLocation('')
             setTimeFrom('')
             setTimeTo('')
+            setOwner('')
+            setEventImage('')
         })
     }
 
@@ -66,7 +71,8 @@ const CreateEvent = () => {
                     <Input value={eventTitle} changeValue={setEventTitle} placeholder='Event Title' type='text' required />
                     <TextArea value={description} changeValue={setDescription} placeholder='Event Description' />
                     <Input value={eventDate} changeValue={setEventDate} placeholder='Event Date' type='date' required />
-                    <SelectBox placeholder='Location' value={eventLocation} changeValue={setEventLocation} datas={locations?.locations || []} required />
+                    <SelectBox placeholder='Location' value={eventLocation} changeValue={setEventLocation} datas={locations?.locations || []} printParameter='name' required />
+                    <SelectBox placeholder='Owner' value={owner} changeValue={setOwner} datas={users?.users || []} printParameter='username' required />
                     <div id='times-container' className='flex justify-between items-center w-full max-w-[500px]'>
                         <div className='w-1/2'>
                             <label>From</label>

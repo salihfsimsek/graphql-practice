@@ -1,6 +1,7 @@
 import React from 'react'
 
-const SelectBox = ({ placeholder, value, changeValue, required, datas }) => {
+const SelectBox = ({ placeholder, value, changeValue, required, datas, printParameter }) => {
+
     return (
         <select
             value={value}
@@ -11,7 +12,7 @@ const SelectBox = ({ placeholder, value, changeValue, required, datas }) => {
         >
             <option value=''>{placeholder}</option>
             {datas?.map((data, index) => (
-                <option key={index} value={data.id}>{data.name}</option>
+                <option key={index} value={data.id}>{data[printParameter]}</option>
             )
             )}
         </select>
