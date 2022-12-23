@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 
 import { NEW_EVENT_MUTATION } from '../queries/Event'
+import { GET_LOCATIONS } from '../queries/Location'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -12,19 +13,22 @@ import FileInput from '../Components/FileInput'
 import Input from '../Components/Input'
 import TextArea from '../Components/TextArea'
 import Loading from '../Components/Loading'
+import SelectBox from '../Components/SelectBox'
 
 const CreateEvent = () => {
     const navigate = useNavigate()
 
     const [saveEvent, { loading, error, data }] = useMutation(NEW_EVENT_MUTATION)
 
+    const { loading: locationLoading, data: locations } = useQuery(GET_LOCATIONS)
+
     const [eventTitle, setEventTitle] = useState('')
     const [description, setDescription] = useState('')
     const [eventDate, setEventDate] = useState('')
+    const [timeFrom, setTimeFrom] = useState('')
+    const [timeTo, setTimeTo] = useState('')
+    const [eventLocation, setEventLocation] = useState('')
     const [eventImage, setEventImage] = useState("https://thumbs.dreamstime.com/z/abstract-poster-event-template-fluid-shapes-composition-modern-event-poster-template-futuristic-design-posters-liquid-color-152203412.jpg")
-    const [eventLocation, setEventLocation] = useState('63a0c99e12d2082f1cb35340')
-    const [timeFrom, setTimeFrom] = useState('11:00')
-    const [timeTo, setTimeTo] = useState('16:00')
 
     const submitForm = e => {
         e.preventDefault()
@@ -47,10 +51,10 @@ const CreateEvent = () => {
             setDescription('')
             setEventDate('')
             navigate('/events')
-            // setEventImage('')
-            // setEventLocation('')
-            // setTimeFrom('')
-            // setTimeTo('')
+            setEventImage('')
+            setEventLocation('')
+            setTimeFrom('')
+            setTimeTo('')
         })
     }
 
@@ -62,6 +66,16 @@ const CreateEvent = () => {
                     <Input value={eventTitle} changeValue={setEventTitle} placeholder='Event Title' type='text' required />
                     <TextArea value={description} changeValue={setDescription} placeholder='Event Description' />
                     <Input value={eventDate} changeValue={setEventDate} placeholder='Event Date' type='date' required />
+                    <SelectBox placeholder='Location' value={eventLocation} changeValue={setEventLocation} datas={locations?.locations || []} required />
+                    <div id='times-container' className='flex justify-between items-center w-full max-w-[500px]'>
+                        <div className='w-1/2'>
+                            <label>From</label>
+                            <Input className='w-[100%]' value={timeFrom} changeValue={setTimeFrom} placeholder='From' type='time' required />
+                        </div>
+                        <div className='w-1/2'>
+                            <label>To</label>
+                            <Input className='w-[100%]' value={timeTo} changeValue={setTimeTo} placeholder='To' type='time' required />
+                        </div>                    </div>
                     <FileInput value={eventImage} changeValue={setEventImage} />
                     <Button type='submit' >
                         {loading ? <Loading /> : <span>Create</span>}
